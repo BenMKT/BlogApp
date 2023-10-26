@@ -8,6 +8,7 @@ class Post < ApplicationRecord
 
   # Methods
   private
+
   def updates_user_posts_counter
     user.update(post_counter: user.posts.count)
   end
