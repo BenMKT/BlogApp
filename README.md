@@ -1,12 +1,12 @@
 <br>
 <div align='center'>
-	<h1>Blog app - creating a data model</h1>
+	<h1>Blog app - validations and model specs</h1>
   </div>
 <a name="readme-top"></a>
 
 # 📗 Table of Contents
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 Blog app - creating a data model ](#-blog-app---creating-a-data-model-)
+- [📖 Blog app - validations and model specs ](#-blog-app---validations-and-model-specs-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Built With ](#built-with-)
@@ -28,9 +28,9 @@
   - [📝 License ](#-license-)
 
 
-# 📖 Blog app - creating a data model <a name="about-project"></a>
+# 📖 Blog app - validations and model specs <a name="about-project"></a>
 
-**Blog app - creating a data model** In this project, I use migration files to build my schema.
+**Blog app - validations and model specs** I add validations to my models and create specs for them.
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
@@ -130,8 +130,8 @@ To run tests, run the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- processing data in models
-- validations and model specs.
+- Add controllers and views.
+- Add tests for controllers and views.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
