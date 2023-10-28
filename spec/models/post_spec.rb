@@ -26,10 +26,10 @@ RSpec.describe Post, type: :model do
   it 'increments the author\'s posts_counter when a post is saved' do
     user = User.create(name: 'John', posts_counter: 0)
     post = Post.new(title: 'Test Post', comments_counter: 0, likes_counter: 0, author_id: user.id)
-    expect {
+    expect do
       post.save
       user.reload
-    }.to change(user, :posts_counter).by(1)
+    end.to change(user, :posts_counter).by(1)
   end
 
   it 'returns the most recent comments limited by the specified limit' do

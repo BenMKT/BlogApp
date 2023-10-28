@@ -32,9 +32,9 @@ RSpec.describe Comment, type: :model do
     user = User.create(name: 'John', posts_counter: 0)
     post = Post.create(title: 'Test Post', comments_counter: 0, likes_counter: 0, author_id: user.id)
     comment = Comment.new(text: 'Test comment', post_id: post.id, user_id: user.id)
-    expect {
+    expect do
       comment.save
       post.reload
-    }.to change(post, :comments_counter).by(1)
+    end.to change(post, :comments_counter).by(1)
   end
 end
