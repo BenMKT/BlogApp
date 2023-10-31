@@ -14,7 +14,6 @@
       - [Key Features ](#key-features-)
     - [video walkthrough](#video-walkthrough)
   - [💻 Getting Started ](#-getting-started-)
-  - [💻 Getting Started ](#-getting-started--1)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
     - [Install](#install)
@@ -64,11 +63,6 @@ Coming soon
 
 - Step 4: If you want to edit this project open it with your favorite text editor.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## 💻 Getting Started <a name="getting-started"></a>
-
-To get a local copy up and running cloning this repo `https://github.com/BenMKT/BlogApp`.
 
 ### Prerequisites
 
