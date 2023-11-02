@@ -3,10 +3,9 @@ require 'rails_helper'
 RSpec.describe 'Posts', type: :request do
   let(:user) do
     User.create(
-      name: 'Benson',
+      name: 'Ahmed',
       photo: 'https://www.google.com/imghp?hl=en&ogbl',
       bio: 'Full Stack Developer',
-      posts_counter: 2
     )
   end
 

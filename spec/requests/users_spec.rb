@@ -6,7 +6,6 @@ RSpec.describe 'Users', type: :request do
       name: 'Benson',
       photo: 'https://www.google.com/imghp?hl=en&ogbl',
       bio: 'Full Stack Developer',
-      posts_counter: 2
     )
   end
 
