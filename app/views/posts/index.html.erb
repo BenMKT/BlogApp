@@ -1,0 +1,7 @@
+<h1><%= @posts.first.author_id%> Posts</h1>
+<ul>
+  <% @posts.each do |post| %>
+    <li><%= link_to post.title, user_post_path(user_id: post.author_id, id: post.id)%></li>
+    <p> <%= post.text%></p>
+  <% end %> 
+</ul>
