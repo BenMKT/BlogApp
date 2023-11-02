@@ -5,7 +5,7 @@ RSpec.describe 'Posts', type: :request do
     User.create(
       name: 'Ahmed',
       photo: 'https://www.google.com/imghp?hl=en&ogbl',
-      bio: 'Full Stack Developer',
+      bio: 'Full Stack Developer'
     )
   end
 
