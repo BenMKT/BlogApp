@@ -27,7 +27,7 @@ RSpec.describe 'Users', type: :request do
       expect(response.body).to include('Users')
     end
   end
-  
+
   describe "User GET /show'" do
     before do
       get "/users/#{user.id}"
