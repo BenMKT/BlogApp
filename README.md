@@ -1,12 +1,12 @@
 <br>
 <div align='center'>
-	<h1>Blog app - validations and model specs</h1>
+	<h1>Blog app - Views</h1>
   </div>
 <a name="readme-top"></a>
 
 # 📗 Table of Contents
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 Blog app - validations and model specs ](#-blog-app---validations-and-model-specs-)
+- [📖 Blog app - Views ](#-blog-app---views-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Built With ](#built-with-)
@@ -27,9 +27,9 @@
   - [📝 License ](#-license-)
 
 
-# 📖 Blog app - validations and model specs <a name="about-project"></a>
+# 📖 Blog app - Views <a name="about-project"></a>
 
-**Blog app - validations and model specs** I add validations to my models and create specs for them.
+**Blog app - Views** In this milestone, added Views associated with the Models and Controllers already created for my Blog App.
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
@@ -42,7 +42,7 @@
 #### Key Features <a name="key-features"></a>
 
 - processing data in models
-- validations and model specs.
+- validations and specs.
 
 ### video walkthrough
 
