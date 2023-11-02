@@ -1,4 +1,121 @@
-<h1><%= @post.title %></h1>
-<p>Text : <%= @post.text %> </p>
-<p>Created at: <%= @post.created_at %></p>
-<p>Updated at: <%= @post.updated_at %></p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="application.css">
+    <style>
+      .container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 8px;
+      }
+
+      .user-image {
+        width: 100px;
+        height: 100px;
+        margin-right: 20px;
+      }
+
+      .user-details {
+        display: flex;
+        flex-direction: column;
+        border: 2px solid black;
+        padding: 10px;
+        width: 20%;
+        text-decoration: none;
+      }
+
+      .user-name {
+        font-size: 1.4em;
+        color: black;
+        text-decoration: none;
+        display: flex; 
+        align-items: center;
+		justify-content: space-between;
+      }
+
+      .user-post-count {
+        color: black;
+        margin-left: 10px;
+      }
+
+      .post-list {
+        display: flex;
+        flex-direction: column;
+        width: 31.5%;
+      }
+
+      .post {
+        border: 2px solid black;
+        padding: 10px;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      .post-text {
+        margin-top: 10px;
+      }
+
+      .post-details {
+        margin-top: 15px;
+        margin-left: 255px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .post-comments {
+        color: black;
+      }
+
+      .post-likes {
+        color: black;
+      }
+
+      .comment-container {
+        border: 2px solid black;
+        padding: 10px;
+        margin-top: 20px;
+      }
+
+      .comment {
+        margin-top: 10px;
+        margin-left: 10px;
+        padding: 10px;
+      }
+
+      .comment-username {
+        font-weight: bold;
+        color: black;
+      }
+
+      .comment-text {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="post-list">
+        <div class="post">
+          <div class="user-name">
+            <%= @targated_post.author_id %>
+            <span class="user-post-count">
+              <%= @targated_post.comments_counter %> Comments <%= @targated_post.likes_counter %> Likes
+            </span>
+          </div>
+          <p class="post-text"><%= @targated_post.text %></p>
+        </div>
+        <div class="comment-container">
+          <% @comments.each do |comment| %>
+            <div class="comment">
+              <span class="comment-username"><%= comment.user_id %>:</span>
+              <span class="comment-text"><%= comment.text %></span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

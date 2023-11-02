@@ -1,7 +1,129 @@
-<h1><%= @posts.first.author_id%> Posts</h1>
-<ul>
-  <% @posts.each do |post| %>
-    <li><%= link_to post.title, user_post_path(user_id: post.author_id, id: post.id)%></li>
-    <p> <%= post.text%></p>
-  <% end %> 
-</ul>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="application.css">
+    <style>
+      .container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 8px;
+      }
+
+      .user-image {
+        width: 100px;
+        height: 100px;
+        margin-right: 20px;
+      }
+
+      .user-details {
+        display: flex;
+        flex-direction: column;
+        border: 2px solid black;
+        padding: 10px;
+        width: 20%;
+        text-decoration: none;
+      }
+
+      .user-name {
+        font-size: 1.4em;
+        color: black;
+        text-decoration: none;
+      }
+
+      .user-post-count {
+        color: black;
+        margin-top: 10px;
+        margin-left: 95px;
+      }
+
+      .post-list {
+        display: flex;
+        flex-direction: column;
+        width: 31.5%;
+      }
+
+      .post {
+        border: 2px solid black;
+        padding: 10px;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      .post-title {
+        font-size: 1.2em;
+        color: black;
+      }
+
+      .post-text {
+        margin-top: 10px;
+      }
+
+      .post-details {
+        margin-top: 15px;
+        margin-left: 255px;
+      }
+
+      .post-comments {
+        color: black;
+      }
+
+      .post-likes {
+        color: black;
+      }
+
+      /* Add style for username and comment */
+      .comment {
+        margin-top: 10px;
+        margin-left: 10px;
+      }
+
+      .comment-username {
+        font-weight: bold;
+        color: black;
+      }
+
+      .comment-text {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="user-image">
+        <img src="/assets/envelope-regular.svg" alt="User Image" class="user-image">
+      </div>
+      <div class="user-details">
+        <h2 class="user-name"><%= @user.name %></h2>
+        <p class="user-post-count">Number of Posts: <%= @user.posts.count %></p>
+      </div>
+    </div>
+
+    <div class="post-list">
+      <% @posts.each do |post| %>
+        <div class="post">
+          <h2 class="post-title"><%= post.title %></h2>
+          <p class="post-text"><%= post.text %></p>
+          <div class="post-details">
+            <span class="post-comments">
+              <%= post.comments.count %> Comments
+            </span>
+            <span class="post-likes">
+              <%= post.likes.count %> Likes
+            </span>
+          </div>
+          <div class="comments">
+            <% post.five_most_recent_comments.each do |comment| %>
+              <div class="comment">
+                <span class="comment-username"><%= comment.user_id %>:</span>
+                <span class="comment-text"><%= comment.text %></span>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </body>
+</html>

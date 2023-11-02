@@ -1,11 +1,130 @@
-<h1><%= @user.name %></h1>
- <p>Name : <%= @user.name%></p>
- <p>Bio : <%= @user.bio%></p>
- <p>Created at: <%= @user.created_at %></p>
- <p>Updated at: <%= @user.updated_at %></p>
- <p>Number of posts : <%= @user.posts_counter %> </p>
- <h2><%= link_to 'Posts', user_posts_path(@user) %></h2>
- <% @posts.each do |post|%>
-    <li> <%= post.title%></li>
- <% end %>
- 
+<html>
+  <head>
+    <title>BApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="application.css">
+    <style>
+	.user-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 8px;
+      }
+
+      .user-image {
+        width: 100px;
+        height: 100px;
+        margin-right: 60px;
+      }
+
+      .user-details {
+        display: flex;
+        flex-direction: column;
+        border: 2px solid black;
+        padding: 10px;
+        width: 20%;
+        text-decoration: none;
+      }
+
+      .user-name {
+        font-size: 1.4em;
+        color: black;
+        text-decoration: none;
+      }
+
+      .user-post-count {
+        color: black;
+        margin-top: 10px;
+        margin-left: 95px;
+      }
+
+      .user-bio {
+        border: 2px solid black;
+        padding: 10px;
+        width: 32%;
+      }
+
+      .user-posts {
+        margin-top: 20px;
+        width: 34%;
+      }
+
+      .post {
+        border: 2px solid black;
+        padding: 10px;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      .post-title {
+        font-size: 1.2em;
+        color: black;
+      }
+
+      .post-text {
+        margin-top: 10px;
+      }
+
+      .post-details {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+      }
+
+      .post-comments {
+        color: black;
+		margin-left: 290px;
+      }
+
+      .post-likes {
+        color: black;
+      }
+
+	  .see-all-posts {
+        margin-left: 160px;
+        margin-top: 20px;
+		font-size: 1.2em;
+		width: 10%;
+		color: black;
+		border-radius: 25px;
+		border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="user-item">
+        <div class="user-image">
+          <img src="/assets/envelope-regular.svg" alt="User Image" class="user-image">
+        </div>
+        <div class="user-details">
+          <h2 class="user-name"><%= @user.name %></h2>
+          <p class="user-post-count">Number of Posts: <%= @posts.count %></p>
+        </div>
+      </div>
+      <div class="user-bio">
+        <h3>Bio</h3>
+        <p><%= @user.bio %></p>
+      </div>
+      <div class="user-posts">
+        <% @user.three_most_recent_post.each do |post| %>
+          <div class="post">
+            <h2 class="post-title"><%= post.title %></h2>
+            <p class="post-text"><%= post.text %></p>
+            <div class="post-details">
+              <span class="post-comments">
+                <%= post.comments.count %> Comments
+              </span>
+              <span class="post-likes">
+                <%= post.likes.count %> Likes
+              </span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="see-all-posts">
+        <%= link_to "See all posts", user_posts_path(@user) %>
+      </div>
+    </div>
+  </body>
+</html>
