@@ -48,7 +48,7 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'post detail response body includes correct placeholder text' do
-      expect(response.body).to include(post.title)
+      expect(response.body).to include(post.text)
     end
   end
 end
