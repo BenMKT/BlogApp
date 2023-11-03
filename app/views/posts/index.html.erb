@@ -88,12 +88,21 @@
       .comment-text {
         color: black;
       }
+
+      .pagination {
+        margin: 10px 0 30px 160px;
+        font-size: 1.2em;
+        color: black;
+        width: 30%;
+        border: 2px solid black;
+        box-shadow: 0 10px 15px 0;
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <div class="user-image">
-        <img src="/assets/envelope-regular.svg" alt="User Image" class="user-image">
+        <%= image_tag(@user.photo, alt: "User Image", class: "user-image") %>
       </div>
       <div class="user-details">
         <h2 class="user-name"><%= @user.name %></h2>
@@ -117,13 +126,14 @@
           <div class="comments">
             <% post.five_most_recent_comments.each do |comment| %>
               <div class="comment">
-                <span class="comment-username"><%= comment.user_id %>:</span>
+                <span class="comment-username"><%= comment.user.name %>:</span>
                 <span class="comment-text"><%= comment.text %></span>
               </div>
             <% end %>
           </div>
         </div>
       <% end %>
+      <button class="pagination">Pagination</button>
     </div>
   </body>
 </html>

@@ -110,7 +110,7 @@
         <div class="comment-container">
           <% @comments.each do |comment| %>
             <div class="comment">
-              <span class="comment-username"><%= comment.user_id %>:</span>
+              <span class="comment-username"><%= comment.user.name %>:</span>
               <span class="comment-text"><%= comment.text %></span>
             </div>
           <% end %>
