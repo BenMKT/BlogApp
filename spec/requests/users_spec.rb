@@ -49,8 +49,8 @@ RSpec.describe 'Users', type: :request do
       expect(response).not_to render_template(:index)
     end
 
-    it 'user detail responsed body with correct user name' do
-      expect(response.body).to include("Name : #{user.name}")
+    it 'user detail responsed body with correct placeholder text' do
+      expect(response.body).to include(user.bio)
     end
   end
 end
