@@ -5,9 +5,9 @@ class LikesController < ApplicationController
     @like = current_user.likes.build(post: @post)
 
     if @like.save
-        redirect_to @post, notice: 'Liked the post!'
+      redirect_to @post, notice: 'Liked the post!'
     else
-        redirect_to @post, alert: 'Failed to like the post.'
+      redirect_to @post, alert: 'Failed to like the post.'
     end
   end
 
