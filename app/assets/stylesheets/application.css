@@ -127,8 +127,11 @@
   font-size: 1.2em;
   width: 10%;
   color: black;
-  border-radius: 25px;
+  border-radius: 3px;
   border: 2px solid black;
+  box-shadow: 0 20px 50px 0;
+  text-align: center;
+  text-decoration: none;
 }
 
 .form {
