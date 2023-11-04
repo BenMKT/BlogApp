@@ -1,100 +1,3 @@
-<html>
-  <head>
-    <title>BApp</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="application.css">
-    <style>
-	.user-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-        padding: 8px;
-      }
-
-      .user-image {
-        width: 100px;
-        height: 100px;
-        margin-right: 60px;
-      }
-
-      .user-details {
-        display: flex;
-        flex-direction: column;
-        border: 2px solid black;
-        padding: 10px;
-        width: 20%;
-        text-decoration: none;
-      }
-
-      .user-name {
-        font-size: 1.4em;
-        color: black;
-        text-decoration: none;
-      }
-
-      .user-post-count {
-        color: black;
-        margin-top: 10px;
-        margin-left: 95px;
-      }
-
-      .user-bio {
-        border: 2px solid black;
-        padding: 10px;
-        width: 32%;
-      }
-
-      .user-posts {
-        margin-top: 20px;
-        width: 34%;
-      }
-
-      .post {
-        border: 2px solid black;
-        padding: 10px;
-        margin-bottom: 20px;
-        position: relative;
-      }
-
-      .post-title {
-        font-size: 1.2em;
-        color: black;
-      }
-
-      .post-text {
-        margin-top: 10px;
-      }
-
-      .post-details {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 15px;
-      }
-
-      .post-comments {
-        color: black;
-		margin-left: 290px;
-      }
-
-      .post-likes {
-        color: black;
-      }
-
-	  .see-all-posts {
-        margin-left: 160px;
-        margin-top: 20px;
-		    font-size: 1.2em;
-        text-align: center;
-        text-decoration: none;
-		    width: 10%;
-        border-radius: 5px;
-		    color: black;
-		    border: 2px solid black;
-        box-shadow: 0 10px 15px 0;
-      }
-    </style>
-  </head>
-  <body>
     <div class="container">
       <div class="user-item">
         <div class="user-image">
@@ -125,9 +28,25 @@
           </div>
         <% end %>
       </div>
+      
+         <!-- Form for creating a new post -->
+
+      <%= form_with(model: @post, url: user_posts_path(@user), class: "form") do |form| %>
+        <div class="field">
+          <%= form.label :title %>
+          <%= form.text_field :title %>
+        </div>
+        <div class="field">
+          <%= form.label :text %>
+          <%= form.text_area :text %>
+        </div>
+        <div class="actions">
+          <%= form.submit 'Create Post' %>
+        </div>
+      <% end %>
+
       <div class="see-all-posts">
-        <%= link_to "View all posts", user_posts_path(@user) %>
+        <%= link_to "See all posts", user_posts_path(@user) %>
       </div>
     </div>
-  </body>
-</html>
+    
