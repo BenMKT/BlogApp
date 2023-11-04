@@ -72,6 +72,7 @@
   border: 2px solid black;
   width: 500px;
 }
+
 .simple-post-container {
   display: flex;
   flex-direction: column;
