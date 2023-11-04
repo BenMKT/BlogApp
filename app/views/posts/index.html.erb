@@ -1,139 +1,32 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>GApp</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="application.css">
-    <style>
-      .container {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-        padding: 8px;
-      }
-
-      .user-image {
-        width: 100px;
-        height: 100px;
-        margin-right: 20px;
-      }
-
-      .user-details {
-        display: flex;
-        flex-direction: column;
-        border: 2px solid black;
-        padding: 10px;
-        width: 20%;
-        text-decoration: none;
-      }
-
-      .user-name {
-        font-size: 1.4em;
-        color: black;
-        text-decoration: none;
-      }
-
-      .user-post-count {
-        color: black;
-        margin-top: 10px;
-        margin-left: 95px;
-      }
-
-      .post-list {
-        display: flex;
-        flex-direction: column;
-        width: 31.5%;
-      }
-
-      .post {
-        border: 2px solid black;
-        padding: 10px;
-        margin-bottom: 20px;
-        position: relative;
-      }
-
-      .post-title {
-        font-size: 1.2em;
-        color: black;
-      }
-
-      .post-text {
-        margin-top: 10px;
-      }
-
-      .post-details {
-        margin-top: 15px;
-        margin-left: 255px;
-      }
-
-      .post-comments {
-        color: black;
-      }
-
-      .post-likes {
-        color: black;
-      }
-
-      /* Add style for username and comment */
-      .comment {
-        margin-top: 10px;
-        margin-left: 10px;
-      }
-
-      .comment-username {
-        font-weight: bold;
-        color: black;
-      }
-
-      .comment-text {
-        color: black;
-      }
-
-      .pagination {
-        margin: 10px 0 30px 160px;
-        font-size: 1.2em;
-        color: black;
-        width: 30%;
-        border: 2px solid black;
-        box-shadow: 0 10px 15px 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="user-image">
-        <%= image_tag(@user.photo, alt: "User Image", class: "user-image") %>
-      </div>
-      <div class="user-details">
-        <h2 class="user-name"><%= @user.name %></h2>
-        <p class="user-post-count">Number of Posts: <%= @user.posts.count %></p>
-      </div>
+<section class="user-card">
+  <a href="<%= user_path(@user) %>">
+    <div class="profile-photo-container">
+        <%= image_tag(@user.photo, alt: @user.name, class: "profile-photo") %>
     </div>
-
-    <div class="post-list">
-      <% @posts.each do |post| %>
-        <div class="post">
-          <h2 class="post-title"><%= post.title %></h2>
-          <p class="post-text"><%= post.text %></p>
-          <div class="post-details">
-            <span class="post-comments">
-              <%= post.comments.count %> Comments
-            </span>
-            <span class="post-likes">
-              <%= post.likes.count %> Likes
-            </span>
-          </div>
-          <div class="comments">
-            <% post.five_most_recent_comments.each do |comment| %>
-              <div class="comment">
-                <span class="comment-username"><%= comment.user.name %>:</span>
-                <span class="comment-text"><%= comment.text %></span>
-              </div>
-            <% end %>
-          </div>
+    <div class="user-details-container">
+      <h2 class="user-name"><%= @user.name %></h2>
+      <h4 class="user-posts">Number of post: <%= @user.posts_counter %></h4>
+    </div>
+  </a>
+</section>
+<a href="<%= new_user_post_path(@user) %>">
+  <button class="create-post-btn">Create new post</button>
+</a>
+<% @posts.each_with_index do |post, index| %>
+    <a href="<%= user_post_path(@user, post) %>">
+      <div class="simple-post">
+        <h4><%= post.title %> #<%= index + 1 %></h4>
+        <p><%= post.text %></p>
+        <div class="comments-likes">
+          <span>Comments: <%= post.comments_counter %></span>
+          <span>Likes: <%= post.likes_counter %></span>
         </div>
-      <% end %>
-      <button class="pagination">Pagination</button>
-    </div>
-  </body>
-</html>
+      </div>
+    </a>
+    <div class="five-recent-comments-container">
+<% post.five_most_recent_comments.each do |comment| %>
+      <span><%= comment.user.name %>: <%= comment.text %></span>
+      
+<% end %>
+ </div>
+<% end %>

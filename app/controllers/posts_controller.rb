@@ -1,25 +1,34 @@
 class PostsController < ApplicationController
-  before_action :find_user, only: [:index]
+  before_action :find_user, only: %i[index show]
   def index
+    @posts = @user.posts
+  end
+
+  def find_user
     @user = User.find(params[:user_id])
-    @posts = @user.posts.includes(:comments)
   end
 
   def show
-    @user = User.find(params[:user_id])
-    @targated_post = Post.find_by(id: params[:id])
+    @post = @user.posts.find(params[:id])
+  end
 
-    if @targated_post.nil?
-      flash[:error] = 'Post not found'
-      redirect_to user_posts_path(@user)
+  def new
+    @user = current_user
+    @post = @user.posts.new
+  end
+
+  def create
+    @post = current_user.posts.new(post_params)
+    if @post.save
+      redirect_to user_posts_path(current_user)
     else
-      @comments = @targated_post.comments
+      render :new, status: :unprocessable_entity
     end
   end
 
   private
 
-  def find_user
-    @user = User.find(params[:user_id])
+  def post_params
+    params.require(:post).permit(:title, :text)
   end
 end
