@@ -1,19 +1,27 @@
 class PostsController < ApplicationController
-  before_action :find_user, only: [:index]
+  before_action :find_user, only: %i[index new create]
+
   def index
-    @user = User.find(params[:user_id])
     @posts = @user.posts.includes(:comments)
   end
 
-  def show
-    @user = User.find(params[:user_id])
-    @targated_post = Post.find_by(id: params[:id])
+  def new
+    @post = Post.new
+  end
 
-    if @targated_post.nil?
-      flash[:error] = 'Post not found'
-      redirect_to user_posts_path(@user)
+  def show
+  @post = Post.find(params[:id])
+  @comments = @post.comments
+  end
+
+
+  def create
+    @post = current_user.posts.build(post_params)
+
+    if @post.save
+      redirect_to user_posts_path(current_user), notice: 'Post was successfully created.'
     else
-      @comments = @targated_post.comments
+      render 'new'
     end
   end
 
@@ -21,5 +29,9 @@ class PostsController < ApplicationController
 
   def find_user
     @user = User.find(params[:user_id])
+  end
+
+  def post_params
+    params.require(:post).permit(:title, :text)
   end
 end
