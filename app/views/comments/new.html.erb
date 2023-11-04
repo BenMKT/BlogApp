@@ -1,9 +1,17 @@
-<%= form_with(model: [@post, @comment], url: post_comments_path(@post)) do |form| %>
-  <div class="field">
-    <%= form.label :text %>
-    <%= form.text_area :text %>
-  </div>
-  <div class="actions">
-    <%= form.submit 'Create Comment' %>
-  </div>
-<% end %>
+ <h2>Create new comment</h2>
+
+ <%= form_with model: @comment, url: user_post_comments_path(@user, @post) do |form| %>
+    
+    <% if @comment.errors.any? %>
+      <% @comment.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    <% end %>
+
+    <div>
+      <%= form.label :text %><br>
+      <%= form.text_area :text %>
+    </div>
+
+     <%= form.submit "Create" %>
+  <% end %>
