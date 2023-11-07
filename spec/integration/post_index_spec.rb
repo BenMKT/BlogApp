@@ -8,37 +8,37 @@ RSpec.describe 'Post index page', type: :feature do
   end
 
   describe 'User and posts display' do
-  before do
+    before do
     visit user_path(@user, @post)
-  end
+    end
 
-  it 'displays user name' do
-    expect(page).to have_content(@user.name)
-  end
+    it 'displays user name' do
+      expect(page).to have_content(@user.name)
+    end
 
-  it 'displays post title' do
-    expect(page).to have_content(@post.title)
-  end
+    it 'displays post title' do
+      expect(page).to have_content(@post.title)
+    end
 
-  it 'displays post text' do
-    expect(page).to have_content(@post.text)
-  end
+    it 'displays post text' do
+      expect(page).to have_content(@post.text)
+    end
 
-  it 'displays post comments counter' do
-    expect(page).to have_content(@post.comments_counter)
-  end
+    it 'displays post comments counter' do
+      expect(page).to have_content(@post.comments_counter)
+    end
 
-  it 'displays post likes counter' do
-    expect(page).to have_content(@post.likes_counter)
-  end
+    it 'displays post likes counter' do
+      expect(page).to have_content(@post.likes_counter)
+    end
 
-  it 'displays the profile picture for each user' do
-    expect(page).to have_css('.profile-photo')
-  end
+    it 'displays the profile picture for each user' do
+      expect(page).to have_css('.profile-photo')
+    end
 
-  it 'displays user posts counter' do
-    expect(page).to have_content(@user.posts_counter)
-  end
+    it 'displays user posts counter' do
+      expect(page).to have_content(@user.posts_counter)
+    end
   end
 
   it 'displays the first comments on a post' do
