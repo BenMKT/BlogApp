@@ -6,7 +6,7 @@ RSpec.feature 'Post index page', type: :feature do
     @post = @user.posts.create(title: 'Post title', text: 'Post body') # create a post
   end
 
-  it "displays user and posts correctly" do
+  it 'displays user and posts correctly' do
     visit user_path(@user, @post)
     expect(page).to have_content(@user.name)
     expect(page).to have_content(@post.title)
@@ -17,10 +17,10 @@ RSpec.feature 'Post index page', type: :feature do
     # Add more expectations for other elements
   end
 
-  it "displays pagination when there are more posts than fit on one page" do
-  21.times { @user.posts.create(title: 'Post title', text: 'Post body') }
-  visit user_posts_path(@user)
-  expect(page).to have_selector('div.pagination')
+  it 'displays pagination when there are more posts than fit on one page' do
+    21.times { @user.posts.create(title: 'Post title', text: 'Post body') }
+    visit user_posts_path(@user)
+    expect(page).to have_selector('div.pagination')
   end
 
   it "redirects to post's show page when a post is clicked" do
