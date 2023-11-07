@@ -1,7 +1,7 @@
 <section class="user-card">
   <a href="<%= user_path(@user) %>">
     <div class="profile-photo-container">
-        <%= image_tag(@user.photo, alt: @user.name, class: "profile-photo") %>
+      <%= image_tag(@user.photo, alt: @user.name, class: "profile-photo") %>
     </div>
     <div class="user-details-container">
       <h2 class="user-name"><%= @user.name %></h2>
@@ -13,20 +13,22 @@
   <button class="create-post-btn">Create new post</button>
 </a>
 <% @posts.each_with_index do |post, index| %>
-    <a href="<%= user_post_path(@user, post) %>">
-      <div class="simple-post">
-        <h4><%= post.title %> #<%= index + 1 %></h4>
-        <p><%= post.text %></p>
-        <div class="comments-likes">
-          <span>Comments: <%= post.comments_counter %></span>
-          <span>Likes: <%= post.likes_counter %></span>
-        </div>
+  <a href="<%= user_post_path(@user, post) %>">
+    <div class="simple-post">
+      <h4><%= post.title %> #<%= index + 1 %></h4>
+      <p><%= post.text %></p>
+      <div class="comments-likes">
+        <span>Comments: <%= post.comments_counter %></span>
+        <span>Likes: <%= post.likes_counter %></span>
       </div>
-    </a>
-    <div class="five-recent-comments-container">
-<% post.five_most_recent_comments.each do |comment| %>
+    </div>
+  </a>
+  <div class="five-recent-comments-container">
+    <% post.five_most_recent_comments.each do |comment| %>
       <span><%= comment.user.name %>: <%= comment.text %></span>
-      
-<% end %>
- </div>
+    <% end %>
+  </div>
+  <div class="pagination">
+    <%= will_paginate @posts %>
+  </div>
 <% end %>
