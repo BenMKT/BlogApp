@@ -9,7 +9,7 @@ RSpec.describe 'Post index page', type: :feature do
 
   describe 'User and posts display' do
     before do
-    visit user_path(@user, @post)
+      visit user_path(@user, @post)
     end
 
     it 'displays user name' do
