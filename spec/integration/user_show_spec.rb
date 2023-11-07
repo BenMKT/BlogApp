@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.feature 'User show page', type: :feature do # rubocop:disable Metrics/BlockLength
+RSpec.describe 'User show page', type: :feature do # rubocop:disable Metrics/BlockLength
   before do
     @user = User.create(name: 'Benson', bio: 'Teacher', photo: 'https://thispeotexist.com/')
     @post = @user.posts.create(title: 'Post title', text: 'Post body')
 
-    visit user_path(@user)
+    visit user_path(@user, @post)
   end
 
   it 'displays the user profile picture' do
@@ -14,6 +14,10 @@ RSpec.feature 'User show page', type: :feature do # rubocop:disable Metrics/Bloc
 
   it 'displays the user username' do
     expect(page).to have_content(@user.name)
+  end
+
+  it 'displays the post body' do
+    expect(page).to have_content(@post.text)
   end
 
   it 'displays the number of posts the user has written' do

@@ -1,11 +1,15 @@
 require 'rails_helper'
 
-RSpec.feature 'User Index', type: :feature do
+RSpec.describe 'User Index', type: :feature do
   before do
     @user = User.create(name: 'Benson', bio: 'Teacher', photo: 'https://thispeotexist.com/')
     @post = @user.posts.create(title: 'Post title', text: 'Post body')
 
     visit user_path(@user)
+  end
+
+  it 'displays the username of all other users' do
+    expect(page).to have_content(@user.name)
   end
 
   it 'displays the profile picture for each user' do
