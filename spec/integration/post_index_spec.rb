@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Post index page', type: :feature do
+RSpec.feature 'Post index page', type: :feature do
   before do
     @user = User.create(name: 'Ahmed', bio: 'Teacher', photo: 'https://thispeotexist.com/')
     @post = @user.posts.create(title: 'Post title', text: 'Post body') # create a post
