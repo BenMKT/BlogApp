@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'User show page', type: :feature do # rubocop:disable Metrics/BlockLength
+RSpec.describe 'User show page', type: :feature do
   before do
     @user = User.create(name: 'Benson', bio: 'Teacher', photo: 'https://thispeotexist.com/')
     @post = @user.posts.create(title: 'Post title', text: 'Post body')

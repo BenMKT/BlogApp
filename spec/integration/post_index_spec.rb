@@ -35,11 +35,11 @@ RSpec.describe 'Post index page', type: :feature do
   it 'displays the profile picture for each user' do
     expect(page).to have_css('.profile-photo')
   end
-  
+
   it 'displays user posts counter' do
     expect(page).to have_content(@user.posts_counter)
   end
-end
+  end
 
   it 'displays the first comments on a post' do
     visit user_post_path(@user, @post)
