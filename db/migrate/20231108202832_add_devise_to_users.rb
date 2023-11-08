@@ -22,9 +22,9 @@ class AddDeviseToUsers < ActiveRecord::Migration[7.1]
       # t.string   :last_sign_in_ip
 
       ## Confirmable
-      # t.string   :confirmation_token
-      # t.datetime :confirmed_at
-      # t.datetime :confirmation_sent_at
+      t.string   :confirmation_token
+      t.datetime :confirmed_at
+      t.datetime :confirmation_sent_at
       # t.string   :unconfirmed_email # Only if using reconfirmable
 
       ## Lockable
@@ -39,13 +39,24 @@ class AddDeviseToUsers < ActiveRecord::Migration[7.1]
 
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
-    # add_index :users, :confirmation_token,   unique: true
+    add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
   end
 
   def self.down
-    # By default, we don't want to make any assumption about how to roll back a migration when your
-    # model already existed. Please edit below which fields you would like to remove in this migration.
-    raise ActiveRecord::IrreversibleMigration
+    remove_index :users, :confirmation_token if index_exists?(:users, :confirmation_token)
+    remove_index :users, :reset_password_token if index_exists?(:users, :reset_password_token)
+    remove_index :users, :email if index_exists?(:users, :email)
+
+    change_table :users do |t|
+      t.remove :encrypted_password (:users, :encrypted_password)
+      t.remove :reset_password_token (:users, :reset_password_token)
+      t.remove :reset_password_sent_at (:users, :reset_password_sent_at)
+      t.remove :remember_created_at (:users, :remember_created_at)
+      t.remove :confirmation_token (:users, :confirmation_token)
+      t.remove :confirmed_at (:users, :confirmed_at)
+      t.remove :confirmation_sent_at (:users, :confirmation_sent_at)
+    end
   end
 end
+
