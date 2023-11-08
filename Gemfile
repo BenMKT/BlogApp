@@ -11,6 +11,9 @@ gem 'sprockets-rails'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 
+# Use the devise gem as the session and account manager for the app
+gem 'devise'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '>= 5.0'
 
@@ -75,3 +78,7 @@ gem 'rails-controller-testing'
 gem 'will_paginate'
 
 gem 'bullet', group: 'development'
+
+gem 'xmpp4r'
+
+gem 'slack-notifier'
