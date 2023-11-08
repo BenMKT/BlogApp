@@ -141,3 +141,9 @@
   color: white;
   font-size: 0.8rem;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
