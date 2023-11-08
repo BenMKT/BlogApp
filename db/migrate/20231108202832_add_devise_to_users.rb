@@ -49,13 +49,13 @@ class AddDeviseToUsers < ActiveRecord::Migration[7.1]
     remove_index :users, :email if index_exists?(:users, :email)
 
     change_table :users do |t|
-      t.remove :encrypted_password (:users, :encrypted_password)
-      t.remove :reset_password_token (:users, :reset_password_token)
-      t.remove :reset_password_sent_at (:users, :reset_password_sent_at)
-      t.remove :remember_created_at (:users, :remember_created_at)
-      t.remove :confirmation_token (:users, :confirmation_token)
-      t.remove :confirmed_at (:users, :confirmed_at)
-      t.remove :confirmation_sent_at (:users, :confirmation_sent_at)
+      t.remove :encrypted_password if column_exists?(:users, :encrypted_password)
+      t.remove :reset_password_token if column_exists?(:users, :reset_password_token)
+      t.remove :reset_password_sent_at if column_exists?(:users, :reset_password_sent_at)
+      t.remove :remember_created_at if column_exists?(:users, :remember_created_at)
+      t.remove :confirmation_token if column_exists?(:users, :confirmation_token)
+      t.remove :confirmed_at if column_exists?(:users, :confirmed_at)
+      t.remove :confirmation_sent_at if column_exists?(:users, :confirmation_sent_at)
     end
   end
 end
