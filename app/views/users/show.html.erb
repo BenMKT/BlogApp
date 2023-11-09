@@ -2,7 +2,11 @@
   <section class="user-card">
     <a href="<%= user_path(@user) %>">
       <div class="profile-photo-container">
-        <%= image_tag(@user.photo, alt: @user.name, class: "profile-photo") %>
+        <% if @user.photo.present? %>
+          <%= image_tag(@user.photo, alt: @user.name, class: "profile-photo") %>
+        <% else %>
+          <%= image_tag('envelope-regular.svg', alt: 'Default Image', class: "profile-photo") %>
+        <% end %>
       </div>
       <div class="user-details-container">
         <h2 class="user-name"><%= @user.name %></h2>

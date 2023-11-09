@@ -24,3 +24,7 @@
 <a href="<%= new_user_post_comment_path(@user, @post) %>">
   <button class="create-comment-btn">New Comment</button>
 </a>
+<a href="<%= user_path(@user) %>">
+   <button class="create-comment-btn">Back to Posts</button>
+</a>
+<button class="create-comment-btn"><%= link_to 'Home', root_path %></button>
