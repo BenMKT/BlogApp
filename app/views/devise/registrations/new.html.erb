@@ -4,31 +4,36 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <% f.label :name %><br />
+    <%= f.text_field :name, class: "name", placeholder: "Username" %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <% f.label :email %><br />
+    <%= f.email_field :email, placeholder: "Email", class: "email", autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <% f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% @minimum_password_length %>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, placeholder: "Password", class: "password", autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <% f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "password", autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <% f.label :bio %><br />
+    <%= f.text_field :bio, class: "bio", placeholder: "Userbio" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class: "signup" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<button class="login"><%= link_to "Log in", new_session_path(resource_name), class: "login1" %></button>
