@@ -152,7 +152,12 @@
   display: none;
 }
 
-.email, .password, .login, .signup, .name, .bio {
+.email,
+.password,
+.login,
+.signup,
+.name,
+.bio {
   width: 30%;
   height: 45px;
   box-shadow: 0 10px 20px 2px #ccc;
