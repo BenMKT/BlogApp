@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   end
 
   def find_user
-    @user = current_user
+    @user = User.find(params[:user_id])
   end
 
   def find_post
