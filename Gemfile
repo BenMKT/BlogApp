@@ -83,3 +83,5 @@ gem 'bullet', group: 'development'
 gem 'xmpp4r'
 
 gem 'slack-notifier'
+
+gem 'cancancan'
